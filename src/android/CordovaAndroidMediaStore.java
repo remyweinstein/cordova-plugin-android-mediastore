@@ -61,14 +61,14 @@ public class CordovaAndroidMediaStore extends CordovaPlugin {
                     if(Build.VERSION.SDK_INT >= 29) {
                         final ContentValues contentValues = new ContentValues();
                         contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, fileName);
-                        contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/png");
+                        contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
                         contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, fileDir);
                         contentValues.put(MediaStore.MediaColumns.IS_PENDING, 1);
 
                         Uri imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
 
                         OutputStream out = contentResolver.openOutputStream(imageUri);
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
 
                         contentValues.clear();
                         contentValues.put(MediaStore.Images.Media.IS_PENDING, 0);
@@ -79,7 +79,7 @@ public class CordovaAndroidMediaStore extends CordovaPlugin {
                         dir.mkdirs();
                         File file = new File(dir, fileName);
                         FileOutputStream out = new FileOutputStream(file);
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                         Uri contentUri = Uri.fromFile(file);
                         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, contentUri));
                     }
