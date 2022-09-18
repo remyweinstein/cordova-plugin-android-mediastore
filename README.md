@@ -27,5 +27,5 @@ exports.store = function (byteString, fileDir, fileName, success, error) {
 ## example
 ```typescript
 let byteString = dataURI.split(",")[1];
-cordova.plugins.CordovaAndroidMediaStore.store(byteString, "Pictures", `${Date.now()}.png`);
+cordova.plugins.CordovaAndroidMediaStore.store(byteString, "Pictures", `${Date.now()}.jpg`);
 ```
